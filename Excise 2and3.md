@@ -1,6 +1,13 @@
 # Database
 ## week3
-### Exercise 3
+### Exercise 2 (I checked with DataGrip)
+#### Kysymys 1
+
+
+
+
+## week3
+### Exercise 3 (I checked with DataGrip)
 #### Kysymys 1
 select country.name as "country name", airport.name as "airport name"
 from airport, country
