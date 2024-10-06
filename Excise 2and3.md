@@ -319,6 +319,7 @@ select * from game;
 #### Kysymys 3
 delete from goal_reached;
 select * from goal_reached;
+
 ![3](https://github.com/user-attachments/assets/8ee87770-5254-4dde-8633-7e93360f6e0d)
 
 #### Kysymys 4
