@@ -158,3 +158,175 @@ from airport left join game on ident = location where name like "%Hels%";
 select name, screen_name
 from goal left join goal_reached on goal.id = goal_id  left join game on game.id = game_id;
 ![Kysymys 5](https://github.com/user-attachments/assets/c687cef3-621a-440f-bba0-a45abb4e0ba0)
+
+## week4
+### Exercise 5 (I checked with DataGrip)
+#### Kysymys 1
+select name
+from country
+where iso_country in(
+select iso_country
+from airport
+where name like 'Satsuma%'
+);
+![1](https://github.com/user-attachments/assets/d5866f65-1ce9-4358-b16d-4a4b4716b583)
+
+
+#### Kysymys 2
+select name
+from airport where
+iso_country in(
+select iso_country
+from country
+where name = 'Monaco'
+);
+![2](https://github.com/user-attachments/assets/f37600e2-3291-4b9e-8bb5-3de5f2a23239)
+
+
+#### Kysymys 3
+select screen_name
+from game
+where id in (
+select game_id
+from goal_reached
+where goal_id in(
+select id
+from goal
+where name = 'CLOUDS'
+)
+);
+![3](https://github.com/user-attachments/assets/3acd8b6b-6450-4280-892f-80a69cfaca0d)
+
+
+#### Kysymys 4
+select country.name
+from country
+where iso_country not in
+(select airport.iso_country
+from airport);
+![4](https://github.com/user-attachments/assets/e85026d4-d149-41a0-9817-0e774998b78d)
+
+
+#### Kysymys 5
+select name
+from goal
+where id not in(
+select goal.id
+from goal, goal_reached, game
+where game.id = game_id and goal.id = goal_id and screen_name = 'Heini'
+);
+![5](https://github.com/user-attachments/assets/f95171b3-3478-47f0-87d6-a91934197ae5)
+
+## week5
+### Exercise 6 (I checked with DataGrip)
+#### Kysymys 1
+select max(elevation_ft)
+from airport;
+![1](https://github.com/user-attachments/assets/7d9fd6f8-0775-486c-b6bd-fa6ff37b496a)
+
+
+#### Kysymys 2
+select continent, count(*)
+from country
+group by continent;
+![2](https://github.com/user-attachments/assets/deabca31-1d57-4ea6-82c4-a4496dcc8ce2)
+
+#### Kysymys 3
+select screen_name, count(*)
+from game, goal_reached
+where id = game_id
+group by screen_name;
+![3](https://github.com/user-attachments/assets/dbf97aa9-7541-45a3-8bf5-6436a99d2e7e)
+
+#### Kysymys 4
+select screen_name
+from game
+where co2_consumed in(
+select min(co2_consumed)
+from game
+);
+![4](https://github.com/user-attachments/assets/6b963427-6d56-4a74-9e33-825c82b0c6e6)
+
+#### Kysymys 5
+select country.name, count(*)
+from airport, country
+where airport.iso_country = country.iso_country
+group by country.iso_country
+order by count(*) desc
+limit 50;
+![5](https://github.com/user-attachments/assets/dbdb6b9a-5074-49ab-8c3d-6e3fd8d2bf49)
+
+#### Kysymys 6
+select country.name
+from airport, country
+where airport.iso_country = country.iso_country
+group by country.iso_country
+having count(*) > 1000;
+![6](https://github.com/user-attachments/assets/d92908d7-4bae-4330-84b2-2093082f07b5)
+
+#### Kysymys 7
+	
+select name
+from airport
+where elevation_ft in (
+select max(elevation_ft)
+from airport
+);
+![7](https://github.com/user-attachments/assets/d304a86a-1027-4002-82e7-5738d82cab30)
+
+#### Kysymys 8
+	
+select name
+from country
+where iso_country in (
+select iso_country
+from airport
+where elevation_ft in(
+select max(elevation_ft)
+from airport
+)
+);
+![8](https://github.com/user-attachments/assets/b18ee95b-489e-4d0e-bb3b-bc14bf85ab2f)
+
+#### Kysymys 9
+	
+select count(*)
+from game, goal_reached
+where id = game_id and screen_name = "Vesa"
+group by screen_name;
+![9](https://github.com/user-attachments/assets/0e59b24b-6243-48ca-9e17-fba08e120ef1)
+
+#### Kysymys 10
+select name
+from airport
+where latitude_deg in(
+select min(latitude_deg)
+from airport
+);
+![10](https://github.com/user-attachments/assets/1f8c8695-8612-4e91-a3ad-1844534a760a)
+
+## week5
+### Exercise 7 (I checked with DataGrip)
+#### Kysymys 1
+update game
+set  location = (select ident from airport where name = "Nottingham Airport"), co2_consumed = co2_consumed+500
+where screen_name = "Vesa";
+select * from game;
+![1](https://github.com/user-attachments/assets/53d7a365-be7c-4393-bf7c-fe1a09376963)
+
+#### Kysymys 2
+
+#### Kysymys 3
+delete from goal_reached;
+select * from goal_reached;
+![3](https://github.com/user-attachments/assets/8ee87770-5254-4dde-8633-7e93360f6e0d)
+
+#### Kysymys 4
+delete from game;
+select * from game
+![4](https://github.com/user-attachments/assets/9fdc1293-aaa0-40de-9995-29c6e2724c57)
+
+## week1 of Software2
+### Exercise 8 (I checked with DataGrip)
+#### Kysymys 1
+
