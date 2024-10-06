@@ -126,3 +126,35 @@ where airport.iso_country = country.iso_country and ident = location and
       
 <img width="812" alt="Kysymys 10" src="https://github.com/user-attachments/assets/146193ad-e91a-414a-845b-2d50510658ff">
 
+## week4
+### Exercise 4 (I checked with DataGrip)
+#### Kysymys 1
+select country.name as "country name", airport.name as "airport name"
+from country inner join airport on airport.iso_country = country.iso_country
+where country.name = "Finland" and scheduled_service = "yes";
+![Kysymys 1](https://github.com/user-attachments/assets/d15a98e6-fe26-45dd-b704-c5bd74470461)
+
+
+#### Kysymys 2
+select screen_name, airport.name
+from game inner join airport on location = ident;
+![Kysymys 2](https://github.com/user-attachments/assets/1303a26e-bbbe-408f-96fb-be6b883726a7)
+
+
+#### Kysymys 3
+select screen_name, country.name
+from game inner join airport on location =
+     ident inner join country on airport.iso_country = country.iso_country;
+![Kysymys 3](https://github.com/user-attachments/assets/ec84c530-4dd9-4cd8-ad1c-2639d29417e4)
+
+
+#### Kysymys 4
+select airport.name, screen_name
+from airport left join game on ident = location where name like "%Hels%";
+![Kysymys 4](https://github.com/user-attachments/assets/71b73237-a874-4e48-97d4-bd2746377f92)
+
+
+#### Kysymys 5
+select name, screen_name
+from goal left join goal_reached on goal.id = goal_id  left join game on game.id = game_id;
+![Kysymys 5](https://github.com/user-attachments/assets/c687cef3-621a-440f-bba0-a45abb4e0ba0)
